@@ -1,0 +1,306 @@
+/* This is the original example. You can take all css styles from here. */
+
+
+// Create and apply at least 5 scss variables (2 marks),
+$primary-color: #324360;
+$secondary-color: #35c4ce;
+$text-color: #787878;
+$body-font: "Quando", serif;
+$font-size-body: 15px;
+// at least 5 nestings (2 marks),
+// and at least 2 mixins (2 marks).
+@mixin responsive-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+@mixin hover-transition($color-hover) {
+    color: $color-hover;
+    transition: color 0.2s;
+  }
+// Make a remote repo (1 mark).
+
+// nesting1
+body {
+    font-family: $body-font;
+    font-size: $font-size-body;
+    color: $text-color;
+  
+    a {
+      font-weight: 400;
+      text-decoration: none;
+      color: #111111;
+      @include hover-transition(#999999);
+    }
+  
+    p {
+      margin-bottom: 25px;
+      line-height: 1.6em;
+    }
+  }
+
+img {
+    @include responsive-img;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.3em;
+    word-wrap: break-word;
+    color: #111111;
+}
+h1 {
+    font-size: 37px;
+}
+h2 {
+    font-size: 31px;
+}
+h3 {
+    font-size: 26px;
+}
+h4 {
+    font-size: 21px;
+}
+h5 {
+    font-size: 18px;
+}
+h6 {
+    font-size: 15px;
+}
+
+
+.container {
+    width: 94%;
+    margin: 0 auto;
+}
+
+
+/* header and main nav */
+// nesting2
+header {
+    font-family: 'Josefin Sans', sans-serif;
+
+    nav {
+        ul {
+            display: none;
+        }
+    }
+}
+
+.top-logo {
+    width: 200px;
+    margin: 20px auto 40px;
+}
+
+
+
+/* posts */
+article {
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-part {
+    margin-bottom: 10px;
+}
+
+.post-title {
+    margin-top: 0;
+}
+
+// nesting
+.post-title {
+    a {
+        color: $primary-color;
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: 900;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        line-height: 1.3em;
+        transition: all .3s ease;
+
+        &:hover {
+            color: #35c4ce;
+        }
+    }
+}
+
+
+
+
+/* footer */
+// nesting3
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #eaf2ff;
+    color: #989898;
+
+    a {
+        color: #989898;
+
+        &:hover {
+            color: #111111;
+        }
+    }
+
+    .footer-logo {
+        width: 200px;
+        margin: 20px auto;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .footer-social-links {
+        padding: 20px 0;
+        line-height: 2em;
+
+        a {
+            margin: 0 10px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    #footer-copyright {
+        padding: 20px 0;
+        font-size: 12px;
+        color: #989898;
+    }
+}
+
+
+@media only screen and (min-width: 650px) {
+    .container {
+        width: 90%;
+    }
+
+    header nav {
+        max-width: 1170px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+    }
+    header nav ul {
+        display: flex;
+    }
+    header nav li {
+        margin: 0 15px;
+        position: relative;
+        line-height: 24px;
+    }
+
+    // nesting
+
+    header nav {
+        a {
+            font-family: 'Josefin Sans', sans-serif;
+            color: $primary-color;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 900;
+    
+            &:hover {
+                color: #35c4ce;
+            }
+        }
+    }
+    
+    header nav li.menu-item-has-children > a::after {
+        margin-left: 7px;
+        font-family: 'FontAwesome';
+        font-size: 13px;
+        color: $primary-color;
+        content: '\f078';
+    }
+    .current-menu-item a {
+        border-bottom: 2px solid $primary-color;;
+    }
+    /* sub nav */
+    header nav ul ul {
+        visibility: hidden;
+        opacity: 0;
+        display: block;
+        position: absolute;
+        z-index: 9999;
+        left: 0;
+        background: #f0f0f0;
+        transition: all 0.2s ease-out;
+    }
+    header nav ul li:hover ul {
+        visibility: visible;
+        opacity: 1;
+    }
+    header nav ul ul li {
+        border-top: 1px solid #e9e9e9;
+        margin: 0;
+    }
+    header nav ul ul a {
+        display: block;
+        color: #111111;
+        min-width: 175px;
+        margin: 0;
+        padding: 20px 10px;
+        line-height: 1.4em;
+        letter-spacing: 1px;
+        transition: .35s;
+    }
+    header nav ul ul a:hover {
+        background: #ffffff;
+        color: #000; 
+    }
+
+
+
+    /* posts */
+    article {
+        display: flex;
+    }
+    .image-part {
+        flex: 1;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+    .image-part img {
+        transition: transform 3.5s ease-in-out;
+    }
+    .image-part img:hover {
+        transform: scale(1.5,1.5);
+    }
+    .content-part {
+        flex: 1;
+        padding-left: 50px;
+    }
+
+
+
+    /* footer */
+    .footer-social-links a {
+        margin: 0 28px;
+    }
+    .footer-social-links i {
+        margin-right: 5px;
+    }
+    .footer-social-links a span {
+        display: inline !important;
+        font-size: 11px;
+    }
+}
